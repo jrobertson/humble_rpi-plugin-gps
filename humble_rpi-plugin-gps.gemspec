@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'humble_rpi-plugin-gps'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.summary = 'A Humble_rpi plugin to publish the GPS location of the Raspberry Pi every 8 seconds by default.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/humble_rpi-plugin-gps.rb']
