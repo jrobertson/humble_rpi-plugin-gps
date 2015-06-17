@@ -7,8 +7,9 @@ require 'serialport_gps'
 
 class HumbleRPiPluginGps < SerialPortGPS
 
-  def initialize(settings: {port: "/dev/ttyAMA0", baud_rate: 9600, refresh_rate: 8}, variables: {})
+  def initialize(settings: {}, variables: {})
 
+    h = {port: "/dev/ttyAMA0", baud_rate: 9600, refresh_rate: 8}.merge settings
     device_id = variables[:device_id] || 'pi'
 
     gps_notification = lambda do |x|
@@ -17,10 +18,10 @@ class HumbleRPiPluginGps < SerialPortGPS
                                        [device_id,  x.latitude, x.longitude]
     end
     
-    h = settings
-    super(port: h[:port], baud_rate: h[:baud_rate], refresh_rate: h[:refresh_rate], callback: gps_notification)    
-  end
+    super(port: h[:port], baud_rate: h[:baud_rate], refresh_rate: h[:refresh_rate], callback: gps_notification)
 
+  end
+  
   alias on_start start  
   
 end
